@@ -1,0 +1,91 @@
+﻿@page
+@model TMDT.Areas.Identity.Pages.Account.Manage.CustomerBehaviorModel
+@{
+    ViewData["Title"] = "Customer Behavior Analysis";
+}
+<style>
+    .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .chart-container {
+        width: 100%;
+        height: 400px;
+    }
+</style>
+
+<h2>Customer Behavior Analysis</h2>
+
+<div class="analysis-grid">
+    <div>
+        <h3>Customer Statistics</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Total Purchases</th>
+                    <th>Total Spent ($)</th>
+                    <th>Last Purchase Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.CustomerBehaviors)
+                {
+                    <tr>
+                        <td>@customer.Id</td>
+                        <td>@customer.CustomerName</td>
+                        <td>@customer.TotalPurchases</td>
+                        <td>@customer.TotalSpent</td>
+                        <td>@customer.LastPurchaseDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h3>Purchases Over Time</h3>
+        <div class="chart-container">
+            <canvas id="purchasesChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('purchasesChart').getContext('2d');
+            const purchasesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.CustomerBehaviors.Select(cb => cb.LastPurchaseDate.HasValue ? cb.LastPurchaseDate.Value.ToShortDateString() : "N/A").ToList())),
+                    datasets: [{
+                        label: 'Total Purchases Over Time',
+                        data: @Html.Raw(Json.Serialize(Model.CustomerBehaviors.Select(cb => cb.TotalPurchases).ToList())),
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'category',
+                            labels: @Html.Raw(Json.Serialize(Model.CustomerBehaviors.Select(cb => cb.LastPurchaseDate.HasValue ? cb.LastPurchaseDate.Value.ToShortDateString() : "N/A").ToList())),
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,113 @@
+﻿@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+
+    var isUser = user != null && await UserManager.IsInRoleAsync(user, "User");
+
+    var isauthor = user != null && await UserManager.IsInRoleAsync(user, "Author");
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+        <a class="nav-link sidebar-heading mt-2">
+            <i class="fas fa-sliders-h"></i>
+            Quản lý tài khoản
+        </a>
+        <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a>
+        <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a>
+        <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a>
+        @if (hasExternalLogins)
+        {
+            <a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a>
+        }
+        <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a>
+        <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a>
+        <!--lich su thanh toan-->
+        <a class="nav-link " asp-controller="paymentresults" asp-action="Index">Lich su thanh toan</a>
+    </li>
+    `   @if (isAdmin)
+    {
+        <!--phan quyen-->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePhanquyen" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fas fa-user-cog"></i>
+                <span>Phân quyền</span>
+            </a>
+            <a class="nav-link @ManageNavPages.RoleIndexNavClass(ViewContext)" asp-page="./RoleIndex">
+                <i class="fas fa-user-tag"></i>
+                Vai trò - Role
+            </a>
+        </li>
+        <li class="nav-item" style="margin: 20px 0%;">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-newspaper"></i>
+                <span>Thong tin Don hang</span>
+            </a>
+            <a class="nav-link" asp-controller="Donhangs" asp-action="Index">
+                <i class="fas fa-shopping-cart"></i>
+                Don hang
+            </a>
+            <a class="nav-link " asp-controller="Donhangs" asp-action="PrintDonhang">
+                <i class="fas fa-print"></i>
+                In don
+            </a>
+        </li>
+        <li class="nav-item" style="margin: 20px 0%;">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts" aria-expanded="true" aria-controls="collapseThree">
+                <i class="fas fa-chart-line"></i>
+                <span>Doanh thu</span>
+            </a>
+            <a class="nav-link @ManageNavPages.DoanhthuNavClass(ViewContext)" asp-page="./Doanhthu">
+                <i class="fas fa-money-bill-wave"></i>
+                Danh thu
+            </a>
+            <a class="nav-link @ManageNavPages.CustomerBehaviorsNavClass(ViewContext)" asp-page="./CustomerBehaviors">
+                <i class="fas fa-chart-line"></i> Phân tích hành vi khách hàng
+            </a>
+            <a class="nav-link @ManageNavPages.ReportNavClass(ViewContext)" asp-page="./Report">
+                <i class="fas fa-file-alt"></i> Tạo Báo cáo
+            </a>
+        </li>
+    }
+
+    @if (isAdmin || isauthor)
+    {
+        <!--quan ly product-->
+        <li class="nav-item" style="margin: 20px 0%;">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-newspaper"></i>
+                <span>QL Product</span>
+            </a>
+            <a class="nav-link @ManageNavPages.CategoryNavClass(ViewContext)" asp-page="./Category">
+                <i class="fas fa-list-alt"></i>
+                Danh mục
+            </a>
+            <a class="nav-link @ManageNavPages.ProductNavClass(ViewContext)" asp-page="./Product">
+                <i class="fas fa-box"></i>
+                Product
+            </a>
+            <a class="nav-link @ManageNavPages.ReviewNavClass(ViewContext)" asp-page="./Review">
+                <i class="fas fa-star"></i>
+                Review
+            </a>
+            <a class="nav-link" asp-controller="Vouchers" asp-action="Index">
+                <i class="fas fa-star"></i>
+                Vouchers
+            </a>
+        </li>
+    }
+
+
+
+    <li class="nav-item">
+        <form class="nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button type="submit" class="btn btn-outline-danger text-danger">Logout</button>
+        </form>
+    </li>
+
+</ul>

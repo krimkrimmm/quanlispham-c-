@@ -1,0 +1,83 @@
+﻿@model TMDT.Models.PaymentInformation
+
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+
+<h1>Thực hiện Thanh toán</h1>
+
+<div>
+    <h4>Thông tin hoa don thanh toán</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreditCardNumber)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.CreditCardNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CVV)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.CVV)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BillingAddress)
+        </dt>
+        <dd class="col-sm-10">
+            : @Html.DisplayFor(model => model.BillingAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Price
+        </dt>
+        <dd class="col-sm-10">
+            : @ViewBag.PricePayment $
+        </dd>
+    </dl>
+</div>
+<div style=" display: inline-flex;">
+    <form method="post" asp-action="ProcessPayment" asp-controller="PaymentInformations">
+        <input type="hidden" name="paymentId" value="@Model.Id" />
+        <input type="hidden" name="totalprice" value="@ViewBag.PricePayment" />
+        <input type="submit" value="Thanh toán Ngay" class="btn btn-primary" />
+    </form>
+    | 
+    <!-- Giữ lại nếu bạn vẫn muốn người dùng có thể chỉnh sửa thông tin của họ -->
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Chỉnh sửa thong tin tai khoan</a> |
+
+    <!-- Điều này có thể được thay đổi để chuyển hướng người dùng trở lại giỏ hàng hoặc trang phù hợp khác -->
+    <a asp-controller="Carts" asp-action="Index">Quay lại Giỏ hàng</a>
+
+</div>
+

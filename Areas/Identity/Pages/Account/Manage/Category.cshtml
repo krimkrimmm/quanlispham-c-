@@ -1,0 +1,63 @@
+﻿@page
+@using TMDT.Areas.Identity.Pages.Account.Manage
+@model TMDT.Areas.Identity.Pages.Account.Manage.CategoriesModel
+
+@{
+    ViewData["Title"] = "Manage Categories";
+}
+
+<div class="row">
+	<div  class="col-md-6">
+        <form method="post" asp-page-handler="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="margin: 12px 0%;" class="form-group">
+                <label asp-for="Input.Name" class="control-label"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" style="margin: 12px 0%;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Categories)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <form method="post" style="display: flex;" asp-page-handler="Edit" asp-route-id="@item.Id">
+					    <td class="col-md-6">
+						    <input type="hidden" asp-for="Input.Id" value="@item.Id" />
+                            <input type="text" asp-for="Input.Name" class="form-control" value="@item.Name" />
+					    </td>
+                        <td>
+						    <button type="submit" class="btn btn-danger">Save</button>
+                        </td>
+                    </form>
+                    <td class="col-md-5 d-flex">
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

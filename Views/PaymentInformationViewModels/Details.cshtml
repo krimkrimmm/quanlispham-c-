@@ -1,0 +1,63 @@
+﻿@model TMDT.Models.PaymentInformationViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h4>PaymentInformationViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CartItems)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model != null && Model.CartItems != null)
+            {
+                @foreach( var item in Model.CartItems)
+                {
+                    @item.Name
+                }
+            }else
+            {
+                <p>khong co du lieu</p>
+            }
+            
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalPrice) 
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vouchers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vouchers)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaymentMethod)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QRCode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QRCode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

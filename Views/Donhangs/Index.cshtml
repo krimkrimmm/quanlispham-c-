@@ -1,0 +1,87 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+@model IEnumerable<TMDT.Models.Donhang>
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin" );
+
+    var isUser = user != null && await UserManager.IsInRoleAsync(user, "User" );
+
+    var isauthor = user != null && await UserManager.IsInRoleAsync(user, "Author") ;
+    ViewData["Title"] = "Don hang can giao";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Donhang.css" />
+</head>
+<body>
+    @if (isAdmin )
+    {
+        <div class="container">
+            <h1 class="mt-3">Don hang can giao</h1>
+            <p>
+                <a asp-action="Create" class="btn btn-primary">Create New</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> IsSuccess </th>
+                            <th> Message </th>
+                            <th> Tennguoinhan </th>
+                            <th> Sdt </th>
+                            <th> Diachi </th>
+                            <th> Createtime </th>
+                            <th> price </th>
+                            <th> QRcode </th>
+                            <th> Trangthaidonhang </th>
+                            <th>Phuong thuc thanh toan</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                            <td data-label="IsSuccess">@item.IsSuccess</td>
+                            <td data-label="Message">@item.Message </td>
+                            <td data-label="Tennguoinhan">@item.Tennguoinhan </td>
+                            <td data-label="Sdt">@item.Sdt </td>
+                            <td data-label="Diachi">@item.Diachi </td>
+                            <td data-label="Createtime">@item.Createtime </td>
+                            <td data-label="Price">@item.price </td>
+                            <td data-label="QRcode">@item.QRcode </td>
+                            <td data-label="Trangthaidonhang">@item.Trangthaidonhang </td>
+                            <td data-label="pttt">@item.TransactionId </td>
+                            <td data-label="Edit"><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a></td>
+                            <td data-label="Details"><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a></td>
+                            <td data-label="Delete"><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a></td>
+                            <td data-label="Actions">
+                                <a asp-controller="Donhangs" asp-action="Dagiaohang" asp-route-id="@item.Id" class="btn btn-sm btn-success">Da giao</a> |
+                                <a asp-controller="Donhangs" asp-action="Chuagiaohang" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Chua giao</a>
+                            </td>
+                        </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary">Tro ve</a>
+            </div>
+        </div>
+    }
+</body>
+</html>

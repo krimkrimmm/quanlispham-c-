@@ -1,0 +1,725 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TMDT.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TMDT.6wrqucc1i3.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Audio\\Chillingmusic.mp3",
+      "PackagePath": "staticwebassets\\Audio\\Chillingmusic.mp3"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Audio\\ThingsYouSaid.mp3",
+      "PackagePath": "staticwebassets\\Audio\\ThingsYouSaid.mp3"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Audio\\matsuri.mp3",
+      "PackagePath": "staticwebassets\\Audio\\matsuri.mp3"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Banner\\Banner.jpg",
+      "PackagePath": "staticwebassets\\Image\\Banner\\Banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Blog\\blog1.jpg",
+      "PackagePath": "staticwebassets\\Image\\Blog\\blog1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Favicon\\Favicon.jpg",
+      "PackagePath": "staticwebassets\\Image\\Favicon\\Favicon.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Icon\\Main.jpg",
+      "PackagePath": "staticwebassets\\Image\\Icon\\Main.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Icon\\cart.jpg",
+      "PackagePath": "staticwebassets\\Image\\Icon\\cart.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Products\\loa-1.jpg",
+      "PackagePath": "staticwebassets\\Image\\Products\\loa-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Products\\loa-2.jpg",
+      "PackagePath": "staticwebassets\\Image\\Products\\loa-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Products\\loa-3.jpg",
+      "PackagePath": "staticwebassets\\Image\\Products\\loa-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Products\\loa-4.jpg",
+      "PackagePath": "staticwebassets\\Image\\Products\\loa-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Products\\loa-5.jpg",
+      "PackagePath": "staticwebassets\\Image\\Products\\loa-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Products\\tainghe-1.jpg",
+      "PackagePath": "staticwebassets\\Image\\Products\\tainghe-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Profile\\icon-profile.jpg",
+      "PackagePath": "staticwebassets\\Image\\Profile\\icon-profile.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Thumbnail\\Chillthumbnail.jpg",
+      "PackagePath": "staticwebassets\\Image\\Thumbnail\\Chillthumbnail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Thumbnail\\Coffee.jpg",
+      "PackagePath": "staticwebassets\\Image\\Thumbnail\\Coffee.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Thumbnail\\Thumbnail.png",
+      "PackagePath": "staticwebassets\\Image\\Thumbnail\\Thumbnail.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\Thumbnail\\Thumbnail2.png",
+      "PackagePath": "staticwebassets\\Image\\Thumbnail\\Thumbnail2.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\footer\\footer.jpg",
+      "PackagePath": "staticwebassets\\Image\\footer\\footer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\Image\\footer\\footer2.jpg",
+      "PackagePath": "staticwebassets\\Image\\footer\\footer2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\Donhang.css",
+      "PackagePath": "staticwebassets\\css\\Donhang.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\Layout.css",
+      "PackagePath": "staticwebassets\\css\\Layout.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\PaymentInformation.css",
+      "PackagePath": "staticwebassets\\css\\PaymentInformation.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\PaymentResult.css",
+      "PackagePath": "staticwebassets\\css\\PaymentResult.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\blue.css",
+      "PackagePath": "staticwebassets\\css\\blue.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\blue.png",
+      "PackagePath": "staticwebassets\\css\\blue.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\blue@2x.png",
+      "PackagePath": "staticwebassets\\css\\blue@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\cart.css",
+      "PackagePath": "staticwebassets\\css\\cart.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\details.css",
+      "PackagePath": "staticwebassets\\css\\details.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\footer.css",
+      "PackagePath": "staticwebassets\\css\\footer.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\homeindex.css",
+      "PackagePath": "staticwebassets\\css\\homeindex.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\lightmode.css",
+      "PackagePath": "staticwebassets\\css\\lightmode.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\printDonhang.css",
+      "PackagePath": "staticwebassets\\css\\printDonhang.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\css\\yourfavourist.css",
+      "PackagePath": "staticwebassets\\css\\yourfavourist.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\_all.css",
+      "PackagePath": "staticwebassets\\js\\flat\\_all.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\aero.css",
+      "PackagePath": "staticwebassets\\js\\flat\\aero.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\aero.png",
+      "PackagePath": "staticwebassets\\js\\flat\\aero.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\aero@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\aero@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\blue.css",
+      "PackagePath": "staticwebassets\\js\\flat\\blue.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\blue.png",
+      "PackagePath": "staticwebassets\\js\\flat\\blue.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\blue@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\blue@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\flat.css",
+      "PackagePath": "staticwebassets\\js\\flat\\flat.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\flat.png",
+      "PackagePath": "staticwebassets\\js\\flat\\flat.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\flat@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\flat@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\green.css",
+      "PackagePath": "staticwebassets\\js\\flat\\green.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\green.png",
+      "PackagePath": "staticwebassets\\js\\flat\\green.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\green@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\green@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\grey.css",
+      "PackagePath": "staticwebassets\\js\\flat\\grey.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\grey.png",
+      "PackagePath": "staticwebassets\\js\\flat\\grey.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\grey@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\grey@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\orange.css",
+      "PackagePath": "staticwebassets\\js\\flat\\orange.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\orange.png",
+      "PackagePath": "staticwebassets\\js\\flat\\orange.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\orange@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\orange@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\pink.css",
+      "PackagePath": "staticwebassets\\js\\flat\\pink.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\pink.png",
+      "PackagePath": "staticwebassets\\js\\flat\\pink.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\pink@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\pink@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\purple.css",
+      "PackagePath": "staticwebassets\\js\\flat\\purple.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\purple.png",
+      "PackagePath": "staticwebassets\\js\\flat\\purple.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\purple@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\purple@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\red.css",
+      "PackagePath": "staticwebassets\\js\\flat\\red.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\red.png",
+      "PackagePath": "staticwebassets\\js\\flat\\red.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\red@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\red@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\yellow.css",
+      "PackagePath": "staticwebassets\\js\\flat\\yellow.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\yellow.png",
+      "PackagePath": "staticwebassets\\js\\flat\\yellow.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\flat\\yellow@2x.png",
+      "PackagePath": "staticwebassets\\js\\flat\\yellow@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\icheck.min.js",
+      "PackagePath": "staticwebassets\\js\\icheck.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\lightmode.js",
+      "PackagePath": "staticwebassets\\js\\lightmode.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-abb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-abb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-acb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-acb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-anz.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-anz.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-bab.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-bab.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-bidv.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-bidv.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-bvb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-bvb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-dab.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-dab.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-eib.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-eib.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-gpb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-gpb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-hdb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-hdb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-klb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-klb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-lpb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-lpb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-mb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-mb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-msb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-msb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-nab.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-nab.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-navi.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-navi.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-ncb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-ncb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-ocb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-ocb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-ojb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-ojb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-pbvn.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-pbvn.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-pg.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-pg.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-pvcb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-pvcb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-scb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-scb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-seab.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-seab.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-sgb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-sgb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-sgcb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-sgcb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-shb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-shb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-tcb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-tcb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-tpb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-tpb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vab.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vab.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-varb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-varb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vcb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vcb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vccb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vccb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vib.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vib.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vpb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vpb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vrb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vrb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\bank-vtb.svg",
+      "PackagePath": "staticwebassets\\zalopay\\bank-vtb.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\check-mark.svg",
+      "PackagePath": "staticwebassets\\zalopay\\check-mark.svg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\iconmomo.jpg",
+      "PackagePath": "staticwebassets\\zalopay\\iconmomo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\krims_k45\\Downloads\\TMDT\\TMDT\\wwwroot\\zalopay\\logo-zalopay.svg",
+      "PackagePath": "staticwebassets\\zalopay\\logo-zalopay.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TMDT.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TMDT.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TMDT.props",
+      "PackagePath": "build\\TMDT.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TMDT.props",
+      "PackagePath": "buildMultiTargeting\\TMDT.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TMDT.props",
+      "PackagePath": "buildTransitive\\TMDT.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

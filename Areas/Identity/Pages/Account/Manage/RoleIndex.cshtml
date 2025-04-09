@@ -1,0 +1,83 @@
+﻿@page
+@model TMDT.Areas.Identity.Pages.Account.Manage.RoleIndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, TMDT
+@{
+    ViewData["Title"] = "Quản lý Tài khoản và Vai trò";
+    ViewData["ActivePage"] = ManageNavPages.RoleIndex;
+}
+
+<div class="container">
+    <h2>Quản lý Tài khoản và Vai trò</h2>
+
+    <div>
+        <h4>Danh sách người dùng</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên người dùng</th>
+                    <th>Vai trò hiện tại</th>
+                    <th colspan="2">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.Username</td>
+                        <td>@user.Role</td>
+                        <td>
+                            <form method="post" asp-page-handler="AssignRole">
+                                <input type="hidden" name="Input.Username" value="@user.Username" />
+                                <select name="Input.Role" class="form-select">
+                                    @foreach (var role in Model.Roles)
+                                    {
+                                        <option value="@role" asp-selected="@(user.Role == role)">@role</option>
+                                    }
+                                </select>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            </form>
+                            
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="DeleteUser">
+                                <input type="hidden" name="username" value="@user.Username" />
+                                <button type="submit" class="btn btn-danger">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h4>Tạo vai trò mới</h4>
+        <form method="post" asp-page-handler="CreateRole">
+            <div class="form-floating mb-3">
+                <input type="text" name="roleName" class="form-control" placeholder="Tên vai trò" />
+                <label for="roleName">Tên vai trò</label>
+            </div>
+            <button type="submit" class="btn btn-secondary">Tạo Vai trò</button>
+        </form>
+    </div>
+
+    <div>
+        <h4>Xóa vai trò</h4>
+        <form method="post" asp-page-handler="DeleteRole">
+            <div class="form-floating mb-3">
+                <select name="roleName" class="form-select">
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-danger">Xóa Vai trò</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

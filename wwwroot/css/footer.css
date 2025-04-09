@@ -1,0 +1,106 @@
+﻿footer {
+    background-image: url("/Image/footer/footer2.jpg");
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+    padding: 40px 0;
+    color: #333;
+    font-size: 14px;
+}
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+    .footer-section h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+            .footer-section ul li a {
+                text-decoration: none;
+                color: #333;
+                transition: color 0.3s ease;
+            }
+
+                .footer-section ul li a:hover {
+                    color: #007bff;
+                }
+
+    .footer-section p {
+        margin-bottom: 10px;
+    }
+
+.newsletter-input {
+    width: calc(100% - 120px);
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.newsletter-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .newsletter-btn:hover {
+        background-color: #0056b3;
+    }
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+    .social-links a {
+        margin: 0 10px;
+        color: #333;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+    }
+
+        .social-links a:hover {
+            color: #007bff;
+        }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .newsletter-input {
+        width: calc(100% - 90px);
+    }
+}

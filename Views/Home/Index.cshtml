@@ -1,0 +1,316 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/homeindex.css" />
+</head>
+<body>
+    <div id="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <img src="/Image/Banner/Banner.jpg" alt="Sale Banner" />
+            </div>
+            <!-- Featured Products -->
+            <h2>Featured Products</h2>
+            <div id="products">
+                <div id="product-slider">
+                    <div id="product-container">
+                        @foreach (var product in Model)
+                        {
+                            <div class="product">
+                                <img class="circular-image" src="@product.ImagePath" alt="@product.Name" />
+                                <a class="thongtin" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                                    @product.Name
+                                </a>
+                                <div class="price">$@product.Price</div>
+                                @if (product.Number > 0)
+                                {
+                                    <div class="quantity">In Stock: @product.Number</div>
+                                    <button class="btn add-to-cart" data-id="@product.Id">
+                                        <i class="fa-solid fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="btn add-to-favorites" data-id="@product.Id">
+                                        <i class="fa-solid fa-heart"></i>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <div class="quantity out-of-stock">Out of Stock</div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <button class="btn next-products">Next</button>
+
+            <!-- Flash Sale Section -->
+            <div class="flash-sale">
+                <h2>Flash Sale</h2>
+                <div class="product-grid">
+                    <!-- Example product block, repeat for each product -->
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-1.jpg" alt="Product 1" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 1</ a>
+                        <div class="price">$99.00</div>
+                        <button class="btn add-to-cart" data-id="1"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-2.jpg" alt="Product 2" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 2</ a>
+                        <div class="price">$299.00</div>
+                        <button class="btn add-to-cart" data-id="2"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-3.jpg" alt="Product 3" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 3</ a>
+                        <div class="price">$499.00</div>
+                        <button class="btn add-to-cart" data-id="3"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-5.jpg" alt="Product 5" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 5</ a>
+                        <div class="price">$59.00</div>
+                        <button class="btn add-to-cart" data-id="5"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <!-- More products as needed -->
+                </div>
+            </div>
+
+            <!-- Electric Category -->
+            <div class="product-category electric">
+                <h2>Electric</h2>
+                <div class="product-grid">
+                    <!-- Example product block, repeat for each product -->
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-2.jpg" alt="Product 2" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 2</ a>
+                        <div class="price">$299.00</div>
+                        <button class="btn add-to-cart" data-id="2"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-2.jpg" alt="Product 2" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 2</ a>
+                        <div class="price">$299.00</div>
+                        <button class="btn add-to-cart" data-id="2"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <!-- More products as needed -->
+                </div>
+            </div>
+
+            <!-- Mobile & Laptop Category -->
+            <div class="product-category mobile-laptop">
+                <h2>Mobile & Laptop</h2>
+                <div class="product-grid">
+                    <!-- Example product block, repeat for each product -->
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-3.jpg" alt="Product 3" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 3</ a>
+                        <div class="price">$499.00</div>
+                        <button class="btn add-to-cart" data-id="3"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-3.jpg" alt="Product 3" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 3</ a>
+                        <div class="price">$499.00</div>
+                        <button class="btn add-to-cart" data-id="3"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-3.jpg" alt="Product 3" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 3</ a>
+                        <div class="price">$499.00</div>
+                        <button class="btn add-to-cart" data-id="3"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div><div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-5.jpg" alt="Product 5" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 5</ a>
+                        <div class="price">$59.00</div>
+                        <button class="btn add-to-cart" data-id="5"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <!-- More products as needed -->
+                </div>
+            </div>
+
+            <!-- Furniture Category -->
+            <div class="product-category furniture">
+                <h2>Furniture</h2>
+                <div class="product-grid">
+                    <!-- Example product block, repeat for each product -->
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-4.jpg" alt="Product 4" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 4</ a>
+                        <div class="price">$199.00</div>
+                        <button class="btn add-to-cart" data-id="4"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <!-- More products as needed -->
+                </div>
+            </div>
+
+            <!-- Fashion Category -->
+            <div class="product-category fashion">
+                <h2>Fashion</h2>
+                <div class="product-grid">
+                    <!-- Example product block, repeat for each product -->
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-5.jpg" alt="Product 5" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 5</ a>
+                        <div class="price">$59.00</div>
+                        <button class="btn add-to-cart" data-id="5"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-5.jpg" alt="Product 5" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 5</ a>
+                        <div class="price">$59.00</div>
+                        <button class="btn add-to-cart" data-id="5"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-5.jpg" alt="Product 5" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 5</ a>
+                        <div class="price">$59.00</div>
+                        <button class="btn add-to-cart" data-id="5"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <div class="product">
+                        <img class="circular-image" src="/Image/Products/loa-5.jpg" alt="Product 5" />
+                        <a style="text-decoration: none; color: black;" href="#">Product 5</ a>
+                        <div class="price">$59.00</div>
+                        <button class="btn add-to-cart" data-id="5"><i class="fa-solid fa-shopping-cart"></i></button>
+                    </div>
+                    <!-- More products as needed -->
+                </div>
+            </div>
+
+            <!-- Blog Updates Section -->
+            <div class="blog-updates" >
+                <h2>Blog Updates</h2>
+                <div class="blog-grid">
+                    <!-- Example blog post block, repeat for each blog post -->
+                    <div class="blog-post">
+                        <img src="/Image/Blog/blog1.jpg" alt="Blog 1" />
+                        <a style="text-decoration: none; color: black;" href="#">Bồ Đào Nha thắng ngược ở phút 92</ a>
+                        <p>Cristiano Ronaldo phung phí cơ hội,...</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
+                    <div class="blog-post">
+                        <img src="/Image/Blog/blog1.jpg" alt="Blog 1" />
+                        <a style="text-decoration: none; color: black;" href="#">Bồ Đào Nha thắng ngược ở phút 92</ a>
+                        <p>Cristiano Ronaldo phung phí cơ hội,...</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
+                    <div class="blog-post">
+                        <img src="/Image/Blog/blog1.jpg" alt="Blog 1" />
+                        <a style="text-decoration: none; color: black;" href="#">Bồ Đào Nha thắng ngược ở phút 92</ a>
+                        <p>Cristiano Ronaldo phung phí cơ hội,...</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
+                    <div class="blog-post">
+                        <img src="/Image/Blog/blog1.jpg" alt="Blog 1" />
+                        <a style="text-decoration: none; color: black;" href="#">Bồ Đào Nha thắng ngược ở phút 92</ a>
+                        <p>Cristiano Ronaldo phung phí cơ hội,...</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
+                    <!-- More blog posts as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Partial -->
+    @await Html.PartialAsync("_FooterPartial")
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').on('click', function () {
+                var quantity = 1;
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/Carts/AddToCart/' + id + '?quantity=' + quantity,
+                    type: 'GET',
+                    success: function (response) {
+                        if (response.success === true) {
+                            alert('Added to cart successfully');
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                        alert('Failed to <i class="fa-solid fa-shopping-cart"></i>');
+                    }
+                });
+            });
+
+            $('.add-to-favorites').on('click', function () {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/Whitelists/Addtofavorist/' + id,
+                    type: 'GET',
+                    success: function (response) {
+                        if (response.success === true) {
+                            alert('Added to favorites successfully');
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                        alert('Failed to add to favorites');
+                    }
+                });
+            });
+
+            $('.next-products').on('click', function () {
+                // Select the first product in the main product list
+                var nextProduct = $('#product-container .product').first().clone();
+
+                // If there is a product to move
+                if (nextProduct.length) {
+                    // Append the product's HTML to the Flash Sale section
+                    $('.product-container').append(nextProduct);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

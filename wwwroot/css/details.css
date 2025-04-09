@@ -1,0 +1,231 @@
+﻿/* CSS styles for product details page */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-details {
+    margin-bottom: 40px;
+}
+
+.discount {
+    background: linear-gradient(to bottom right, orange, #ff6a00, #ff0000);
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.product-info {
+    display: flex;
+    margin-top: 20px;
+}
+
+.product-image {
+    flex: 1;
+}
+
+    .product-image img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+.description {
+    flex: 1;
+    margin-left: 20px;
+}
+
+    .description h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+.description-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.quantity {
+    flex: 1;
+}
+
+.buttons {
+    flex: 1;
+    text-align: right;
+}
+
+    .buttons button {
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+.btn-out-of-stock {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.comment-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.user-comment input,
+.user-comment textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.submit {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.reviews {
+    margin-top: 20px;
+}
+
+    .reviews h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    @media only screen (max-width: 700px){
+        /* CSS styles for product details page */
+
+        .container {
+            max-width: 95%; /* Adjusted width for mobile devices */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product-details {
+            margin-bottom: 40px;
+        }
+
+        .discount {
+            background: linear-gradient(to bottom right, orange, #ff6a00, #ff0000);
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column; /* Stack items vertically on mobile */
+            margin-top: 20px;
+        }
+
+        .product-image {
+            flex: 1;
+        }
+
+            .product-image img {
+                max-width: 100%; /* Ensure image does not exceed container width */
+                height: auto; /* Maintain aspect ratio */
+                border-radius: 8px;
+            }
+
+        .description {
+            flex: 1;
+            margin-top: 20px; /* Adjust spacing */
+        }
+
+            .description h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+        .description-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .quantity {
+            flex: 1;
+        }
+
+        .buttons {
+            flex: 1;
+            text-align: center; /* Center align buttons on mobile */
+            margin-top: 10px; /* Adjust spacing */
+        }
+
+            .buttons button {
+                display: block; /* Ensure buttons occupy full width */
+                width: 100%; /* Occupy full width */
+                padding: 10px 20px;
+                border-radius: 8px;
+                margin: 10px auto; /* Adjust spacing */
+                cursor: pointer;
+            }
+
+        .btn-out-of-stock {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .comment-section {
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .user-comment input,
+        .user-comment textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Ensure padding does not affect width */
+        }
+
+        .submit {
+            width: 100%; /* Occupy full width */
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .reviews {
+            margin-top: 20px;
+        }
+
+            .reviews h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+    }

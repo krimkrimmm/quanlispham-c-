@@ -1,0 +1,246 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    ViewData["Title"] = @Model.Name;
+
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+
+    var isUser = user != null && await UserManager.IsInRoleAsync(user, "User");
+
+    var isauthor = user != null && await UserManager.IsInRoleAsync(user, "Author");
+	
+}
+@model TMDT.Models.Products
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/details.css">
+    <style>
+        /* Add custom styles here */
+        #profile{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-details">
+            <h1>@Model.Name</h1>
+            <div class="discount">Giảm giá @Model.decrease%</div>
+            <div class="product-info">
+                <div class="product-image">
+                    <img src="@Model.ImagePath" alt="@Model.Name">
+                </div>
+                <div class="description">
+                    <h2>THÔNG TIN</h2>
+                    <div class="description-text">@Model.Description</div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="d-block">
+                    <div class="quantity">
+                        <label for="quantityInput">Số lượng mua:</label>
+                        <input type="number" id="quantityInput" value="1" min="1" oninput="checkQuantity()">
+                    </div>
+                    <div class="color">
+                        <span>Color: @Model.Color</span>
+                        <span>Size: @Model.Size</span>
+                    </div>
+                </div>
+                <div class="buttons">
+                    @if (Model.Number > 0)
+                    {
+                        <button class="btn-add-to-cart" onclick="addToCart()">MUA @Model.Name</button>
+                        <button class="btn-add-to-cart" onclick="addToCart()">GIỎ HÀNG</button>
+                    }
+                    else
+                    {
+                        <button class="btn-out-of-stock">HẾT HÀNG</button>
+                        <a class="btn-other-products" href="/">Một số mặt hàng khác</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="comment-section">
+            <div class="user-comment">
+                @if (SignInManager.IsSignedIn(User))
+                {
+					<label for="userId">hi @user.UserName</label>
+                    <input type="text" value="@user.UserName" id="userId" name="userId" style="display: none;" required>
+                    <br />
+                }
+                else
+                {
+                    <label for="userId">Your name:</label>
+                    <input type="text" id="userId" name="userId" required>
+                }
+                <label for="rating">Your rating:</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" required>
+                <label for="comment">Your comment:</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+                <button id="btn-comment" class="submit">Comment</button>
+            </div>
+            <div class="reviews">
+                <h3>Đánh Giá Sản Phẩm</h3>
+                <div id="reviews">
+                    <!-- Reviews will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Gọi hàm GetReviews khi trang được tải
+        $(document).ready(function () {
+            var prId = @Model.Id;
+
+            // Hàm để lấy đánh giá và hiển thị
+            function loadReviews() {
+                $.ajax({
+                    url: '/ProductReviews/GetReviews',
+                    method: 'GET',
+                    data: { productId: prId },
+                    success: function (response) {
+                        if (response.message === "Success") {
+                            $('#comment').val('');
+                            $('#reviews').empty(); // Xóa nội dung cũ
+
+                            if (response.data == null || response.data.length === 0) {
+                                $('#reviews').append('<p>Không có đánh giá.</p>');
+                            } else {
+                                $.each(response.data, function (index, review) {
+                                    var html = '<div>';
+                                    html += '<div>';
+                                    html += '<div>';
+                                    html += '<img id="profile" src="/Image/Profile/icon-profile.jpg" /> ';
+                                    html += '</div>'
+                                    html += '<div id="commentId">Review ID: ' + review.id + '</div>'; // id thay cho Id
+                                    html += '<div>User ID: ' + review.userId + '</div>'; // Thêm hiển thị UserId
+                                    html += '<div>Rate: ' + review.rating + '</div>';
+                                    html += '<div>Comment: ' + review.comment + '</div>'; // Thêm hiển thị Comment
+                                    html += '<div>Created At: ' + review.createdAt + '</div>'; // Thêm hiển thị CreatedAt
+                                    html += '<button class="deletecomment" data-commentid="' + review.id + '">Delete comment</button>'; // Thêm class và data attribute
+                                    html += '</div>';
+                                    html += '</div>';
+                                    html += '<br/>';
+                                    $('#reviews').append(html);
+                                });
+                            }
+                        } else {
+                            alert('Không thể lấy đánh giá');
+                        }
+                    },
+                    error: function () {
+                        alert('Đã xảy ra lỗi khi xử lý yêu cầu. Vui lòng thử lại sau.');
+                    }
+                });
+            }
+
+            // Gọi hàm khi trang được tải
+            loadReviews();
+
+            $('.submit').on('click', function () {
+                // Các đoạn code khác giữ nguyên
+                var userId = $('#userId').val();
+                var rate = $('#rating').val();
+                var comment = $('#comment').val();
+                $.ajax({
+                    url: '/ProductReviews/AddReviews',
+                    method: 'POST',
+                    data: {
+                        productId: prId,
+                        userId: userId,
+                        rating: rate,
+                        comment: comment
+                    },
+                    success: function (response) {
+                        if (response.message === "Success") {
+                            // Xử lý thành công (nếu cần)
+                            console.log(response.data);
+                            alert(response.data.productId + '\n' + response.data.userId + '\n' + response.data.rating + '\n' + response.data.comment);
+
+                            // Gọi hàm để cập nhật đánh giá sau khi thêm mới
+                            loadReviews();
+                        } else {
+                            // Xử lý thất bại (nếu cần)
+                            alert('Không thể thêm đánh giá');
+                        }
+                    },
+                    error: function () {
+                        alert('Đã xảy ra lỗi khi xử lý yêu cầu. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+
+            // Sự kiện click cho nút "Xóa bình luận"
+            $(document).on('click', '.deletecomment', function () {
+                var commentId = $(this).data('commentid'); // Lấy commentId từ data attribute
+                $.ajax({
+                    url: '/ProductReviews/DeleteReviews',
+                    method: 'DELETE',
+                    data: { commentId: commentId },
+                    success: function (response) {
+                        if (response.success === true) {
+                            // Xử lý thành công (nếu cần)
+                            alert(commentId);
+                            alert('Xóa bình luận thành công!');
+                            loadReviews();
+                        } else {
+                            // Xử lý thất bại (nếu cần)
+                            alert('Không thể xóa bình luận');
+                        }
+                    },
+                    error: function () {
+                        alert('Đã xảy ra lỗi khi xử lý yêu cầu. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+        });
+
+
+        function checkQuantity() {
+            var quantityInput = document.getElementById("quantityInput");
+            var quantity = parseInt(quantityInput.value);
+            if (quantity <= 0) {
+                quantityInput.value = 1; // Đặt lại giá trị mặc định là 1 nếu giá trị nhập vào là 0 hoặc âm
+            }
+        }
+
+        function addToCart() {
+            var quantity = document.getElementById("quantityInput").value;
+            var productId = @Model.Id;
+
+            // Gửi yêu cầu đến hàm AddToCart trong controller bằng cách sử dụng AJAX hoặc chuyển trang
+            $.ajax({
+                url: '/Carts/AddToCart/' + productId + '?quantity=' + quantity,
+                type: 'GET',
+                success: function (response) {
+                    if (response.success === true) {
+                        alert('Đã thêm vào giỏ hàng');
+                    }
+                    else {
+                        alert(response.message + '\n hihi!');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                    alert('khong the them vao giò hàng');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

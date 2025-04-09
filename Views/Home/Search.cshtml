@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+
+@model List<TMDT.Models.Products> // Khai báo mô hình
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["title"]</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <div id="main">
+        <div>
+            Tim kiem: @ViewBag.SearchKey
+        </div>
+        <div>
+            loc theo category:
+        </div>
+        <div id="products">
+            @foreach (var product in Model)
+            {
+                @if(product == null)
+                {
+                    <div>khong co san pham nao</div>
+                }
+                else
+                {
+                    <div class="product">
+                        <div>
+                            <img src="@product.ImagePath" alt="@product.Name" />
+                        </div>
+                        <div>
+                            <h1>@product.Name</h1>
+                            <div class="price">$@product.Price</div>
+                            @if (product.Number > 0)
+                            {
+                                <div class="quantity">In Stock: @product.Number</div>
+                                <button class="btn add-to-cart" data-id="@product.Id"><i class="fa-solid fa-shopping-cart"></i></button>
+                                <button class="btn add-to-favorites" style="margin: 10px 0% 0px 0%;" data-id="@product.Id"><i class="fa-solid fa-heart"></i></button>
+                                <a class="btn btn-outline-danger thongtin" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                                    Thong tin
+                                </a>
+                            }
+                            else
+                            {
+                                <div class="quantity out-of-stock">Out of Stock</div>
+                            }
+                        </div>
+                    </div>
+                }
+                
+            }
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $('.add-to-cart').on('click', function () {
+            var quantity = 1;
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/Carts/AddToCart/' + id + '?quantity=' + quantity,
+                type: 'GET',
+                success: function (response) {
+                    if (response.success === true) {
+                        alert('Added to cart successfully');
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                    alert('Failed to <i class="fa-solid fa-shopping-cart"></i>');
+                }
+            });
+        });
+
+        $('.add-to-favorites').on('click', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/Whitelists/Addtofavorist/' + id,
+                type: 'GET',
+                success: function (response) {
+                    if (response.success === true) {
+                        alert('Added to favorites successfully');
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                    alert('Failed to add to favorites');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

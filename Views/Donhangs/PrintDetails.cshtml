@@ -1,0 +1,95 @@
+﻿@model TMDT.Models.Donhang
+
+@{
+    ViewData["Title"] = "Print Details - " + @Model.Id;
+}
+
+<div class="form-print">
+    <table>
+        <thead>
+            <tr>
+                <th>Ma don hang</th>
+                <th>Ten </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.Tennguoinhan</td>
+            </tr>
+            <tr>
+                <th>Dia chi:</th>
+                <td>@Model.Diachi</td>
+            </tr>
+            <tr>
+                <th>Message:</th>
+                <td>@Model.Message</td>
+            </tr>
+            <tr>
+                <th>Id san pham</th>
+                <th>Ten sp</th>
+                <th>So luong</th>
+                <th>Gia</th>
+                <th>Mau</th>
+                <th>size</th>
+            </tr>
+            @if (Model.ProductOrders != null && Model.ProductOrders.Any())
+            {
+                @foreach (var item in Model.ProductOrders)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Number</td>
+                        <td>@item.Price</td>
+                        <td>@item.Color</td>
+                        <td>@item.Size</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">Không có sản phẩm nào trong đơn.</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Tong gia: @Model.price $</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div>
+        <div>
+            QR CODE:
+        </div>
+        <br />
+        <div>
+            <img src="data:image/png;base64,@Model.QRcode" alt="Mã QR" /><!--hien tai chua the tao qr code-->
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-info" style="margin-top: 20px;" id="printButton">Print</button>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.getElementById('printButton').addEventListener('click', function () {
+            var printContents = document.querySelector('.form-print').innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        });
+    </script>
+}

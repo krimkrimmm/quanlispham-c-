@@ -1,0 +1,495 @@
+﻿@model TMDT.Models.PaymentInformationViewModel
+@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    ViewData["Title"] = "Xác nhận thanh toán";
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+    var isUser = user != null && await UserManager.IsInRoleAsync(user, "User");
+    var isAuthor = user != null && await UserManager.IsInRoleAsync(user, "Author");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/blue.css">
+    <link rel="stylesheet" href="~/css/PaymentInformation.css">
+</head>
+<body>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @if (Model != null)
+        {
+            <div style="width: 60%; margin: 0px 20%; display: block;">
+                <h1>Thông tin đơn hàng</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="display: none;">Mã sản phẩm</th>
+                            <th>Tên</th>
+                            <th>Hình ảnh</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.CartItems != null && Model.CartItems.Any())
+                        {
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <tr>
+                                    <td class="productId" style="display:none;">@item.ProductId</td>
+                                    <td>@item.Name</td>
+                                    <td><img src="@item.ImagePath" style="width: 100px; border-radius: 12px;" /></td>
+                                    <td>@item.Number</td>
+                                    <td>@item.TotalPrice $</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5">Không có sản phẩm nào trong giỏ hàng.</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" style="text-align: right;"><strong>Tổng:</strong></td>
+                            <td id="price">@Model.TotalPrice $</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div style="width: 100%; display: flex;">
+                    <select id="voucherSelect" style="width: 70%; border: none;">
+                        <option value="NULL" selected>Chọn mã giảm giá (chỉ áp dụng 1 lần)</option>
+                        @foreach (var voucher in Model.Vouchers)
+                        {
+                            <option value="@voucher.Id">@voucher.Code</option>
+                        }
+                    </select>
+                    <button id="applyVoucher" style="width: 30%; border: none;">Áp dụng</button>
+                </div>
+
+                <br />
+                <div>
+                    <label id ="phuongthucthanhtoan" for="phuongthucthanhtoan">Vui lòng chọn phương thức thanh toán: </label>
+                    <div class="mb-1">
+                        <label><input type="radio" name="iCheck" class="iradio_flat-blue" value="CHUYENKHOAN"> <i class="fas fa-exchange-alt"></i> Chuyen khoan </label>
+                    </div>
+                    <div class="mb-1">
+                        <label><input type="radio" name="iCheck" class="iradio_flat-blue" value="COD"> <i class="fas fa-money-bill-wave"></i> COD </label>
+                    </div>
+                    <div class="mb-1">
+                        <label><input type="radio" name="iCheck" class="iradio_flat-blue" value="MOMO"> Ví MOMO <img id="momo" src="~/zalopay/iconmomo.jpg" alt=""></label>
+                    </div>
+                    <div class="mb-1">
+                        <label><input type="radio" name="iCheck" class="iradio_flat-blue" value="ZALOPAY"> Ví ZALOPAY <img src="~/zalopay/logo-zalopay.svg" alt=""></label>
+                    </div>
+                    <div class="mb-1">
+                        <label><input type="radio" name="iCheck" class="iradio_flat-blue" value="VISA"> Visa, Mastercard, JCB <span class="txtGray">(qua cổng ZaloPay)</span></label>
+                    </div>
+                    <div class="mb-1">
+                        <label><input type="radio" name="iCheck" class="iradio_flat-blue" checked value="ATM"> Thẻ ATM <span class="txtGray">(qua cổng ZaloPay)</span></label>
+                    </div>
+
+                    <div class="bank-group">
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-vtb.svg" alt=""> Vietinbank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-varb.svg" alt=""> Agribank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-vcb.svg" alt=""> Vietcombank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-bidv.svg" alt=""> BIDV
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-dab.svg" alt=""> Đông Á Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-scb.svg" alt=""> Sacombank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-acb.svg" alt=""> ACB
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-mb.svg" alt=""> MBBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-tcb.svg" alt=""> Techcombank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-vpb.svg" alt=""> VPBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-eib.svg" alt=""> Eximbank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-vib.svg" alt=""> VIB
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-hdb.svg" alt=""> HDBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-ojb.svg" alt=""> Oceanbank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-shb.svg" alt=""> SHB
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-msb.svg" alt=""> Maritime Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-seab.svg" alt=""> SeABank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-abb.svg" alt=""> ABBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-tpb.svg" alt=""> TPBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-sgcb.svg" alt=""> TMCP Sài Gòn
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-lpb.svg" alt=""> Liên Việt Post Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-sgb.svg" alt=""> SaigonBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-ocb.svg" alt=""> OCB
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-nab.svg" alt=""> Nam Á Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-vab.svg" alt=""> Việt Á Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-bvb.svg" alt=""> Bảo Việt Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-gpb.svg" alt=""> GPBank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-bab.svg" alt=""> Bắc Á Bank
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+
+                        <a href="#" class="bank-item">
+                            <img src="~/zalopay/bank-vccb.svg" alt=""> Ngân hàng Bản Việt
+                            <img src="~/zalopay/check-mark.svg" alt="" class="checkmark">
+                        </a>
+                    </div>
+                </div>
+
+                <br />
+                <div style="width: 100%; display: block;">
+                    <div style="display: none;" id="qrcode">@Model.QRCode</div>
+                    <div style="width: 100%; margin: 5px 0%;">Thông tin khách hàng</div>
+                    <div style="width: 100%; margin: 5px 0%; display: flex;">
+                        <input id="name" style="width: 30%; border: none; " value="@user.UserName" placeholder="@user.UserName" />
+                        @if (user.PhoneNumber == null)
+                        {
+                            <input style="width: 30%; border: none;" placeholder="Sdt" id="phone" />
+                        }
+                        else
+                        {
+                            <input style="width: 30%; border: none; " value="@user.PhoneNumber" placeholder="@user.PhoneNumber" id="phone" />
+                        }
+
+                    </div>
+                    <div style="width: 100%;">
+                        <input id="email" style="border: none; width: 100%;" placeholder="@user.Email" value="@user.Email" />
+                    </div>
+                    <div style="width: 100%; display: flex; margin: 5px 0%;">
+                        <select id="city" style="width: 50%; border: none;">
+                            <option selected disabled>Chọn Tỉnh/Thành phố</option>
+                            @foreach (var city in ViewBag.Cities)
+                            {
+                                <option data-id="@city.Id" value="@city.Name">@city.Name</option>
+                            }
+                        </select>
+                        <select id="district" style="width: 50%; border: none;">
+                            <option value="phuctho" selected>Chọn Quận/Huyện</option>
+                        </select>
+                    </div>
+                    <div style="width: 100%; margin: 5px 0%;">
+                        <input id="address" style="border: none; width: 100%;" placeholder="Địa chỉ cụ thể" />
+                    </div>
+                    <div style="width: 100%; margin: 5px 0%;">
+                        <input id="notes" style="border: none; width: 100%;" placeholder="Ghi chú khác (nếu có)" />
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="xacnhan">XÁC NHẬN</button>
+            </div>
+        }
+        else
+        {
+            <p>Không có dữ liệu.</p>
+        }
+    }
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            /*$('input').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+            });
+
+            $(".bank-item").click(function () {
+                $(".bank-item").removeClass("selected");
+                $(this).addClass("selected");
+            });*/
+
+            $('#applyVoucher').click(function () {
+                var voucherId = $('#voucherSelect').val();
+
+                $.ajax({
+                    url: '/PaymentInformations/ValidateVoucher/',
+                    type: 'POST',
+                    data: { voucherId: voucherId },
+                    success: function (response) {
+                        if (response.success) {
+                            var discount = response.discount;
+                            var originalPrice = parseFloat($('#price').text());
+                            var discountedPrice = originalPrice - discount;
+                            $('#price').text(discountedPrice.toFixed(2) + ' $');
+                            alert('Mã giảm giá hợp lệ. Đã áp dụng giảm giá ' + discount + ' $');
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+
+            $('#city').change(function () {
+                var cityId = $(this).find(':selected').data('id'); // Lấy giá trị của thuộc tính data-id của option được chọn
+
+                $.ajax({
+                    url: '/PaymentInformations/GetDistrictbyId/',
+                    type: 'POST',
+                    data: { cityId: cityId },
+                    success: function (response) {
+                        if (response.success) {
+                            var districtSelect = $('#district');
+                            districtSelect.empty(); // Xóa tất cả các option cũ trong dropdown list quận/huyện
+                            districtSelect.append('<option value="none" selected disabled>Chọn Quận/Huyện</option>'); // Thêm option mặc định
+
+                            $.each(response.districts, function (index, district) {
+                                districtSelect.append('<option value="' + district.name + '">' + district.name + '</option>'); // Thêm từng quận/huyện vào dropdown list
+                            });
+                        } else {
+                            alert('Không có dữ liệu huyện/thị xã cho tỉnh/thành phố này.');
+                        }
+
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+
+            $('#xacnhan').click(function () {
+                // Kiểm tra các trường nhập liệu
+                var phone = document.getElementById('phone').value;
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var city = document.getElementById('city').value;
+                var district = document.getElementById('district').value;
+                var address = document.getElementById('address').value;
+                var notes = document.getElementById('notes').value;
+                var pttt = $("input[name='iCheck']:checked").val();
+                console.log(pttt);
+                var price = parseFloat($('#price').text());
+                var QRcode = document.getElementById('qrcode').value;
+
+                // Lấy tất cả các productId và lưu vào một mảng
+                var productIds = Array.from(document.getElementsByClassName('productId')).map(function (element) {
+                    return parseInt(element.innerText); // Chuyển đổi sang số nguyên
+                });
+
+                if (!email || !phone || city === 'Chọn Tỉnh/Thành phố' || !address) {
+                    alert('Vui lòng nhập đầy đủ thông tin.');
+                    return;
+                }
+
+                if (pttt === 'COD') {
+                    if (confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không? (COD)')) {
+                        $.ajax({
+                            url: '/PaymentInformations/ProcessPaymentCOD',
+                            type: 'POST',
+                            data: {
+                                pttt: pttt,
+                                email: email,
+                                phone: phone,
+                                name: name,
+                                city: city,
+                                district: district,
+                                address: address,
+                                notes: notes,
+                                totalPrice: price,
+                                QRcode: QRcode,
+                                productIds: productIds
+                            },
+                            success: function (response) {
+                                console.log('Đơn hàng đã được thanh toán thành công. Hãy chờ đơn hàng được gửi.');
+                                alert('Đơn hàng đã được thanh toán thành công. Hãy chờ đơn hàng được gửi.');
+                                window.location.href = '/Carts'; // Chuyển hướng tới trang giỏ hàng sau khi thanh toán thành công
+                            },
+                            error: function (error) {
+                                console.error('Lỗi khi xử lý đơn hàng.', error);
+                                alert('Lỗi khi xử lý đơn hàng. Vui lòng thử lại sau.');
+                            }
+                        });
+                    }
+                }
+                else if (pttt === 'MOMO') {
+                    if (confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không? (MOMO)')) {
+                        $.ajax({
+                            url: '/PaymentInformations/ProcessPaymentThroughGatewayMomo/',
+                            type: 'POST',
+                            data: {
+                                pttt: pttt,
+                                email: email,
+                                phone: phone,
+                                name: name,
+                                city: city,
+                                district: district,
+                                address: address,
+                                notes: notes,
+                                totalPrice: price,
+                                QRcode: QRcode,
+                                productIds: productIds
+                            },
+                            success: function (response) {
+                                console.log('Success: ', response);
+                                console.log('Đơn hàng đã được thanh toán thành công. Hãy chờ đơn hàng được gửi.');
+                                alert('Đơn hàng đã được thanh toán thành công. Hãy chờ đơn hàng được gửi.');
+                                window.location.href = '/Carts'; // Chuyển hướng tới trang giỏ hàng sau khi thanh toán thành công
+                            },
+                            error: function (error) {
+                                console.error('Lỗi khi xử lý đơn hàng.', error);
+                                alert('Lỗi khi xử lý đơn hàng. Vui lòng thử lại sau.');
+                            }
+                        });
+                    }
+                }
+                else if (pttt === 'ZALOPAY') {
+                    if (confirm('Bạn có chắc chắn muốn thanh toán đơn hàng này không? (ZALOPAY)')) {
+                        $.ajax({
+                            url: '/PaymentInformations/ProcessPaymentThroughGatewayZalopay/',
+                            type: 'POST',
+                            data: {
+                                pttt: pttt,
+                                email: email,
+                                phone: phone,
+                                name: name,
+                                city: city,
+                                district: district,
+                                address: address,
+                                notes: notes,
+                                totalPrice: price,
+                                QRcode: QRcode,
+                                productIds: productIds
+                            },
+                            success: function (response) {
+                                console.log('Success: ', response);
+                                console.log('Đơn hàng đã được thanh toán thành công. Hãy chờ đơn hàng được gửi.');
+                                alert('Đơn hàng đã được thanh toán thành công. Hãy chờ đơn hàng được gửi.');
+                                alert(response);
+                                window.open(response, '_blank');
+                                //goi ajax lay callback thanh toan de xac nhan 
+
+                                window.location.href = '/Carts';
+                            },
+                            error: function (error) {
+                                console.error('Lỗi khi xử lý đơn hàng.', error);
+                                alert('Lỗi khi xử lý đơn hàng. Vui lòng thử lại sau.');
+                            }
+                        });
+                    }
+                }
+                else {
+                    alert('Vui lòng chọn phương thức thanh toán hợp lệ.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

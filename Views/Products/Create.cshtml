@@ -1,0 +1,104 @@
+﻿@model TMDT.Models.Products
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1>Create Products</h1>
+        <hr/>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImagePath" class="control-label"></label>
+                        <input asp-for="ImagePath" class="form-control" />
+                        <span asp-validation-for="ImagePath" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Number" class="control-label"></label>
+                        <input asp-for="Number" class="form-control" />
+                        <span asp-validation-for="Number" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="decrease" class="control-label"></label>
+                        <input asp-for="decrease" class="form-control" />
+                        <span asp-validation-for="decrease" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryId" class="control-label"></label>
+                        <select id="Categories" asp-for="CategoryId" class="form-control">
+                            @if (Model != null && Model.CategoryId != null)
+                            {
+                            
+                            }
+                            else
+                            {
+                                <option value="0" disabled selected>Select a category</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: '/Categories/GetName', // Chỉnh sửa đường dẫn URL để chắc chắn là đúng
+                    method: 'GET',
+                    success: function (response) {
+                        if (response.message === "Success") {
+                            // Thêm option từ danh sách danh mục
+                            $.each(response.data, function (index, category) {
+                                $('#Categories').append($('<option>', {
+                                    value: category.name, // Thay đổi thành property id của category nếu có
+                                    text: category.name // Thay đổi thành property name của category nếu có
+                                }));
+                            });
+                        } else {
+                            // Xử lý khi không có dữ liệu danh mục
+                            alert('No data');
+                        }
+                    },
+                    error: function () {
+                        alert('Đã có lỗi xảy ra trong quá trình xử lý. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+        </script>
+
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+    </body>
+</html>

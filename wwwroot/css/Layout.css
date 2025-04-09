@@ -1,0 +1,29 @@
+﻿/* Các kiểu chung */
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+@media (max-width: 767px) {
+    .footer-menu {
+        display: block;
+    }
+
+    .header-menu {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-menu {
+        display: none;
+    }
+
+    .header-menu {
+        display: block;
+    }
+}

@@ -1,0 +1,334 @@
+﻿@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html { 
+    font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 1px;
+}
+#header
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+a{
+    display: flex;
+}
+.lienhe {
+    color: gray;
+    padding: 0px 5px;
+    text-align: center;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.lienhe a{
+    text-decoration: none;
+}
+
+    .lienhe a span {
+        color: black;
+    }
+
+#block{
+    width: 100%;
+    display: block;
+}
+
+#layoutdiv1 {
+    justify-content: end;
+    background: linear-gradient(to bottom, #ffffff, #808080);
+    margin-bottom: 1px;
+}
+
+    #layoutdiv1 div {
+        display: flex;
+    }
+
+#layoutdiv2 {
+    background: linear-gradient(to bottom, #2d2d2d, #2d2d3d, gray);
+    display: flex;
+    width: 100%;
+    height: 80px;
+}
+
+    #layoutdiv21{
+        display: flex;
+        width: 75%;
+    }
+
+#layoutdiv3 {
+    padding: 10px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    color: white;
+    width: 20%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#layoutdiv4{
+    justify-content: center;
+    width: 80%;
+    align-items: center;
+    display: flex;
+}
+
+#layoutdiv5 {
+    padding: 10px;
+    width: 30%;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+#layoutdiv5 ul{
+    display: flex;
+    width: 100%;
+}
+    #layoutdiv5 ul li {
+        width: 25%;
+        margin: 0px 12px;
+        display: flex;
+
+    }
+
+    #layoutdiv5 ul li a {
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+        display: block;
+        border: 1px dotted white;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+        #layoutdiv5 ul li a span{
+            font-size: 15px;
+            width: 100%;
+            text-align: center;
+        }
+        #layoutdiv5 ul li a i {
+            font-size: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+#layoutdiv6 {
+    background: linear-gradient(to bottom, gray, white);
+    height: 40%;
+}
+
+#input {
+    width: 50%;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+#input:hover{
+    border: 1px solid white;
+}
+
+#btnsearch {
+    width: 10%;
+    border: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#btnsearch:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+/* Tệp CSS */
+
+@media only screen and (max-width: 900px) {
+    /* Điều chỉnh kiểu hiển thị khi màn hình có độ rộng tối đa là 600px */
+    .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+        box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    }
+
+    html {
+        font-size: 14px;
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        margin-bottom: 1px;
+    }
+
+    #header {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    a {
+        display: flex;
+    }
+
+    .lienhe {
+        color: gray;
+        padding: 0px 0px;
+        width: 50%;
+        margin: 0.5px 0px;
+        text-align: center;
+        border: 1px solid transparent;
+        border-image: linear-gradient(to bottom, #ffcc00, #ff6666) 1;
+        border-image-slice: 1;
+        border-radius: 12px;
+    }
+
+        .lienhe a {
+            text-decoration: none;
+            margin: 0.2px 30%;
+
+        }
+            .lienhe a span {
+                font-size: 13px;
+                
+                color: black;
+            }
+
+    #block {
+        width: 100%;
+        display: block;
+    }
+
+    #layoutdiv1 {
+        justify-content: end;
+        background: linear-gradient(to bottom, #ffffff, #808080);
+        margin-bottom: 1px;
+    }
+
+    #layoutdiv1 div{
+        display: flex;
+    }
+
+    #layoutdiv2 {
+        background: linear-gradient(to bottom, #2d2d2d, #808080, gray, orange);
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    #layoutdiv21 {
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid gray;
+        border-top: 1px solid gray;
+    }
+
+    #layoutdiv3 {
+        width: 45%;
+        height: 100%;
+        padding: 30px 2.5%;
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+        color: white;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    #layoutdiv4 {
+        justify-content: center;
+        height: 100%;
+        width: 50%;
+        padding: 30px 0%;
+        align-items: center;
+        display: flex;
+    }
+
+    #layoutdiv5 {
+        padding: 10px;
+        width: 100%;
+        border-left: none;
+        border-right: none;
+
+    }
+
+        #layoutdiv5 ul {
+            display: flex;
+            width: 100%;
+        }
+
+            #layoutdiv5 ul li {
+                width: 100%;
+                margin: 0px 0px;
+                display: flex;
+                
+            }
+
+                #layoutdiv5 ul li a {
+                    align-items: center;
+                    width: 100%;
+                    text-decoration: none;
+                    display: block;
+                    border-radius: 12px;
+                    border-top: 1px solid gray;
+                    border-bottom: 1px solid gray;
+                    border-left: 1px solid gray;
+                    border-right: 1px solid gray;
+                    text-align: center;
+                }
+
+                    #layoutdiv5 ul li a span {
+                        font-size: 7px;
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                    #layoutdiv5 ul li a i {
+                        font-size: 15px;
+                        width: 100%;
+                        text-align: center;
+                    }
+
+
+        #layoutdiv6 {
+            background: linear-gradient(to bottom, orange, red, blue);
+            height: 40%;
+        }
+
+        #input {
+            width: 50%;
+            border: none;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+            padding-left: 10px;
+            font-size: 10px;
+        }
+
+        #input:hover {
+            border: 1px solid white;
+        }
+
+    #btnsearch {
+        width: 10%;
+        border: none;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+        #btnsearch:hover {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+
+        #layoutdiv6 ul li a{
+            text-align: center;
+            font-size: 13px;
+        }
+}

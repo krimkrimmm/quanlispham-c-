@@ -1,0 +1,10 @@
+﻿1. lam chuc nang giam gia trong muc thanh toan // chua co
+2. lam chuc nang thanh toan
+5. lam chuc nang chuyen sang tieng viet
+6. lam chuc nang dang nhap // ok
+7. lam chuc nang lien ket mang xa hoi // chua co
+8. lam chuc nang dashboard //tam thoi Ok 
+9. lam chuc nang giao hang
+10. lam chuc nang loc san pham
+11. lam chuc nang thanh toan QR
+lam chuc nang ...

@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+
+
+<html>
+    <head>
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+		<link rel="stylesheet" href="~/TMDT.styles.css" asp-append-version="true" />
+    </head>
+    <body>
+			<ul class="navbar-nav">
+				@if (SignInManager.IsSignedIn(User))
+				{
+					<li class="nav-item">
+						<a id="manage" style="width: 50px; font-size: 12px; text-align: center;" class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Chao <br /> @UserManager.GetUserName(User)!</a>
+					</li>
+				}
+				else
+				{
+					<li class="nav-item">
+						<a class="nav-link text-light" id="login" asp-area="Identity" asp-page="/Account/Login">
+							<i class="fa-solid fa-person"></i>
+							<span>
+								Login
+							</span>
+						</a>
+					</li>
+				}
+			</ul>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </body>
+</html>
+

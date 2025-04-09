@@ -1,0 +1,116 @@
+﻿body {
+    font-size: 15px;
+}
+.suggestions {
+    top: 100%; /* Position the suggestions below the search bar */
+    left: 0;
+    z-index: 1000; /* Ensure suggestions are above other elements */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px; /* Adjust based on your preference */
+    overflow-y: auto; /* Add scroll if there are many suggestions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .suggestions div {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .suggestions div:hover {
+            background-color: #f0f0f0;
+        }
+
+.header-top {
+    background-color: #343a40;
+    color: #fff;
+    padding: 0.5rem 0;
+}
+
+    .header-top .container {
+        flex-wrap: wrap;
+    }
+
+.navbar {
+    background-color: #28a745;
+    padding: 1rem;
+}
+
+.navbar-brand img {
+    max-height: 50px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important;
+}
+
+.contact-info {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+    .search-bar input {
+        margin-right: 5px;
+    }
+
+@media (max-width: 767px) {
+    body {
+        font-size: 10px;
+    }
+    .suggestions {
+        border: 1px solid #ccc;
+        border-top: none;
+        max-height: 150px;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+        .suggestions div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+            .suggestions div:hover {
+                background-color: #f0f0f0;
+            }
+
+    .contact-info {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .header-top .container div {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+        .search-bar input {
+            margin-bottom: 0.5rem;
+        }
+}
+
+.dropdown-menu .dropdown-menu {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}

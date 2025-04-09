@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    ViewData["Title"] = "Lich su don hang";
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+}
+@model IEnumerable<TMDT.Models.PaymentResult>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-3">Lich su don hang</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> IsSuccess </th>
+                        <th> Message </th>
+                        <th> Tennguoinhan </th>
+                        <th> Sdt </th>
+                        <th> Diachi </th>
+                        <th> Createtime </th>
+                        <th> Price </th>
+                        <th> QRcode </th>
+                        <th> Trang thai don hang </th>
+                        <th> Phuong thuc thznh toan </th>
+                        <th>Action</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @if (item.Tennguoinhan == user.UserName)
+                        {
+                            <tr>
+                                <td data-label="IsSuccess">@item.IsSuccess</td>
+                                <td data-label="Message">@item.Message </td>
+                                <td data-label="Tennguoinhan">@item.Tennguoinhan </td>
+                                <td data-label="Sdt">@item.Sdt </td>
+                                <td data-label="Diachi">@item.Diachi </td>
+                                <td data-label="Createtime">@item.Createtime </td>
+                                <td data-label="Price">@item.price </td>
+                                <td data-label="QRcode">@item.QRcode </td>
+                                <td data-label="Trangthaidonhang">@item.Trangthaidonhang </td>
+                                <td data-label="pttt">@item.TransactionId </td>
+                                <td data-label="Details"><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a></td>
+                                <td data-label="Delete"><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Huy don hang</a></td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary">Tro ve</a>
+        </div>
+    </div>
+
+</body>
+</html>

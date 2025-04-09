@@ -1,0 +1,190 @@
+﻿@model IEnumerable<TMDT.Models.Cart>
+
+@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+
+@{
+    ViewData["Title"] =  "Your Carts";
+}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/cart.css"/>
+    </head>
+    <body>
+    <div id="divall">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label for="selectAllCheckbox">
+                            <input type="checkbox" id="selectAllCheckbox" />
+                            <span>All</span>
+                        </label>
+                    </th>
+                    <th></th>
+                    <th> </th>
+                    <th></th>
+                    <th></th>
+                    <th><a asp-controller="Carts" asp-action="DeleteAll" id="deleteall">Xoa tat ca san pham</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input class="checkpr" type="checkbox" />
+                        </td>
+                        <td>
+                            <a style="text-decoration: none;" asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Name)</a>
+                        </td>
+                        <td>
+                            <img style="width: 100px; border-radius: 12px;" src="@Html.DisplayFor(modelItem => item.ImagePath)" />
+						</td>
+                        <form asp-action="Save" method="post">
+                        <td style="width: 100px;">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="@item.Id" name="id" />
+                            <input asp-for="@item.Number" class="form-control" name="number" min="0" />
+                            <span asp-validation-for="@item.Number" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <div id="itemTotalPrice">@Html.DisplayFor(modelItem => item.TotalPrice) $</div>
+                        </td>
+                        <td>
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <a asp-controller="Carts" asp-action="DeletebyId" asp-route-Id="@item.Id"><i class="fa-solid fa-trash-alt"></i> </a>
+                        </td>
+                        </form>
+                        
+                    </tr>
+                }
+            </tbody>
+		</table>
+        <div style="display: flex; justify-content: space-around;">
+            <div>
+                Price: <span id="price">0</span> $
+            </div>
+            <div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <button id="payment" type="submit" class="btn btn-outline-danger" style="text-decoration: none; border-radius: 5px; padding: 10px; border: 1px dashed gray; width: 100%; float: right;">Mua Ngay</button>
+                }
+                else
+                {
+                    <button id="payment2" type="submit" class="btn btn-outline-danger" style="text-decoration: none; border-radius: 5px; padding: 10px; border: 1px dashed gray; width: 100%; float: right;">Mua Ngay</button>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            /*$('.check-voucher').on('click', function () {
+                var voucherInput = $(this).closest('tr').find('.voucher-input');
+                var voucher = voucherInput.val();
+                var cartId = voucherInput.data('cart-id');
+                $.ajax({
+                    url: '/Carts/CheckVoucher?Id=' + cartId,
+                    method: 'GET',
+                    data: { voucher: voucher },
+                    success: function (response) {
+                        if (response.isValid) {
+                            // Cập nhật giá sản phẩm hoặc thực hiện các hành động khác sau khi mã giảm giá hợp lệ
+                            alert('Mã giảm giá hợp lệ! Áp dụng thành công!');
+                        } else {
+                            // Xử lý khi mã giảm giá không hợp lệ
+                            alert('Mã giảm giá không hợp lệ hoặc đã hết hạn!');
+                        }
+                        // Xóa giá trị trong ô nhập liệu
+                        voucherInput.val('');
+                        location.reload();
+                        updateTotalPrice();
+                    },
+                    error: function () {
+                        alert('Đã có lỗi xảy ra trong quá trình xử lý. Vui lòng thử lại sau.');
+                    }
+                });
+            });*/
+
+            $('#selectAllCheckbox').on('change', function () {
+                var isChecked = $(this).prop('checked');
+
+                $('.checkpr').prop('checked', isChecked);
+                updateTotalPrice();
+            });
+
+            // Logic cho từng checkbox cá nhân
+            $('.checkpr').on('change', function () {
+                var anyUnchecked = $('.checkpr:not(:checked)').length > 0;
+                $('#selectAllCheckbox').prop('checked', !anyUnchecked);
+                updateTotalPrice();
+            });
+
+            function updateTotalPrice() {
+                var totalPrice = 0;
+                $('.checkpr:checked').each(function () {
+                    var price = parseFloat($(this).closest('tr').find('#itemTotalPrice').text());
+                    totalPrice += price;
+                    return totalPrice;
+                });
+                $('#price').text(totalPrice.toFixed(2));
+            }
+
+            $('#payment').click(function (e) {
+                e.preventDefault();
+
+                // Get the selected cart item IDs
+                var selectedCartItemIds = $('.checkpr:checked').map(function () {
+                    return $(this).closest('tr').find('input[type="hidden"][name="id"]').val();
+                }).get();
+                console.log(`selectedCartItemIds: ${Array.isArray(selectedCartItemIds) ? 'Array of strings' : typeof selectedCartItemIds}`);
+
+                var totalprice = parseFloat($('#price').text());
+                console.log(`totalprice: ${typeof totalprice}`);
+                $.ajax({
+                    url: '/PaymentInformations/CreateDonhang/',
+                    type: 'POST',
+                    data: {
+                        price: totalprice,
+                        cartItemIds: selectedCartItemIds
+                    },
+                    success: function (response) {
+                        if (response.redirectUrl) {
+                            /*
+                            $.ajax({
+                                url: '/Carts/DeletePaidItems' + selectedCartItemIds,
+                                type: 'POST',
+                                contentType: 'application/json',
+                                success: function (deleteResponse) {
+                                    window.location.href = response.redirectUrl;
+                                },
+                                error: function (deleteError) {
+                                    alert('Failed to delete paid items from cart. Error: ' + deleteError.responseText);
+                                }
+                            });
+                            */
+                            alert('Payment processed successfully.');
+                            window.location.href = response.redirectUrl
+                        } else {
+                            alert('Hay chon san pham!');
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('Failed to process payment. Error: ' + xhr.responseText);
+                    }
+                });
+            });
+                
+            $('#payment2').click(function () { 
+                alert('Login to Payment!');
+                window.location.href = "/Identity/Account/Login";
+            });
+        });
+	</script>
+</body>
+</html>

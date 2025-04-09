@@ -1,0 +1,38 @@
+﻿@page
+@model PersonalDataModel
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+    var isUser = user != null && await UserManager.IsInRoleAsync(user, "User");
+    var isauthor = user != null && await UserManager.IsInRoleAsync(user, "Author");
+}
+<div class="row">
+    <div class="col-md-6" style="margin: 20px 0%;">
+        <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+        <p>
+            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+        </p>
+        <form id="download-data" style="margin: 12px 0%;" asp-page="DownloadPersonalData" method="post">
+            <button class="btn btn-primary" type="submit">Download</button>
+        </form>
+        @if(isUser || isauthor)
+        {
+            <p>
+                <a id="delete" style="margin: 12px 0%;" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
+            </p>
+        }
+        
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

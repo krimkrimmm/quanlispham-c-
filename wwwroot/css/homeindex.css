@@ -1,0 +1,268 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-section img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+#products {
+    display: flex;
+}
+
+#product-slider {
+    overflow: hidden; /* Hide overflow to control scroll */
+    margin-bottom: 20px; /* Add margin for spacing */
+}
+
+#product-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các sản phẩm chuyển dòng khi không đủ không gian */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    justify-content: space-around; /* Các sản phẩm sẽ căn giữa và phân bố đều trên các dòng */
+}
+
+.product {
+    width: 200px; /* Độ rộng của mỗi sản phẩm */
+    padding: 10px; /* Padding bao quanh mỗi sản phẩm */
+    background-color: #fff; /* Màu nền của sản phẩm */
+    border: 1px solid #ddd; /* Viền xung quanh sản phẩm */
+    border-radius: 5px; /* Bo tròn các góc */
+    text-align: center; /* Căn giữa nội dung trong sản phẩm */
+    margin: 0px 5px;
+}
+
+.blog-grid {
+    width: 100%; /* Độ rộng của mỗi sản phẩm */
+    padding: 10px; /* Padding bao quanh mỗi sản phẩm */
+    background-color: #fff; /* Màu nền của sản phẩm */
+    border: 1px solid #ddd; /* Viền xung quanh sản phẩm */
+    border-radius: 5px; /* Bo tròn các góc */
+    text-align: center; /* Căn giữa nội dung trong sản phẩm */
+    font-size: 15px;
+    display: flex;
+}
+
+.blog-post {
+    width: 20%;
+    margin: 0px 2%;
+}
+
+.blog-grid img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10%; /* Bo tròn hình ảnh */
+    object-fit: cover; /* Hiển thị hình ảnh đầy đủ trong vùng giới hạn */
+    margin-bottom: 10px; /* Khoảng cách giữa hình ảnh và các nội dung khác */
+}
+
+.product img.circular-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10%; /* Bo tròn hình ảnh */
+    object-fit: cover; /* Hiển thị hình ảnh đầy đủ trong vùng giới hạn */
+    margin-bottom: 10px; /* Khoảng cách giữa hình ảnh và các nội dung khác */
+}
+
+.product .btn {
+    margin-top: 10px; /* Khoảng cách giữa các nút hoặc nội dung */
+}
+
+.product .price {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product .quantity {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.thongtin {
+    text-decoration: none;
+    color: black;
+}
+
+.out-of-stock {
+    color: red; /* Màu sắc để làm nổi bật khi hết hàng */
+}
+
+.next-products {
+    margin-left: 10px;
+}
+
+.product:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.product h1, .product h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+
+@media (max-width: 766px) {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    #main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 10px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-section img {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .product-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+    }
+
+    #products {
+        display: flex;
+    }
+
+    #product-slider {
+        overflow: hidden; /* Hide overflow to control scroll */
+        margin-bottom: 20px; /* Add margin for spacing */
+    }
+
+    #product-container {
+        display: flex;
+        flex-wrap: wrap; /* Cho phép các sản phẩm chuyển dòng khi không đủ không gian */
+        gap: 0px; /* Khoảng cách giữa các sản phẩm */
+        justify-content: space-around; /* Các sản phẩm sẽ căn giữa và phân bố đều trên các dòng */
+    }
+
+    .product {
+        width: 200px; /* Độ rộng của mỗi sản phẩm */
+        padding: 10px; /* Padding bao quanh mỗi sản phẩm */
+        background-color: #fff; /* Màu nền của sản phẩm */
+        border: 1px solid #ddd; /* Viền xung quanh sản phẩm */
+        border-radius: 5px; /* Bo tròn các góc */
+        text-align: center; /* Căn giữa nội dung trong sản phẩm */
+        margin: 0px 5px;
+    }
+
+    .blog-grid {
+        width: 100%; /* Độ rộng của mỗi sản phẩm */
+        padding: 10px; /* Padding bao quanh mỗi sản phẩm */
+        background-color: #fff; /* Màu nền của sản phẩm */
+        border: 1px solid #ddd; /* Viền xung quanh sản phẩm */
+        border-radius: 5px; /* Bo tròn các góc */
+        text-align: center; /* Căn giữa nội dung trong sản phẩm */
+        font-size: 15px;
+        display: flex;
+    }
+
+    .blog-post {
+        width: 20%;
+        margin: 0px 2%;
+    }
+
+    .blog-grid img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10%; /* Bo tròn hình ảnh */
+        object-fit: cover; /* Hiển thị hình ảnh đầy đủ trong vùng giới hạn */
+        margin-bottom: 10px; /* Khoảng cách giữa hình ảnh và các nội dung khác */
+    }
+
+    .product img.circular-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10%; /* Bo tròn hình ảnh */
+        object-fit: cover; /* Hiển thị hình ảnh đầy đủ trong vùng giới hạn */
+        margin-bottom: 10px; /* Khoảng cách giữa hình ảnh và các nội dung khác */
+    }
+
+    .product .btn {
+        margin-top: 10px; /* Khoảng cách giữa các nút hoặc nội dung */
+    }
+
+    .product .price {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .product .quantity {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 5px;
+    }
+
+    .thongtin {
+        text-decoration: none;
+        color: black;
+    }
+
+    .out-of-stock {
+        color: red; /* Màu sắc để làm nổi bật khi hết hàng */
+    }
+
+    .next-products {
+        margin-left: 10px;
+    }
+
+    .product:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product h1, .product h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+}

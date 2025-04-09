@@ -1,0 +1,171 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TMDT.Areas.Identity.Data
+@model IEnumerable<TMDT.Models.Donhang>
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var user = await UserManager.GetUserAsync(User);
+
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+
+    var isUser = user != null && await UserManager.IsInRoleAsync(user, "User");
+
+    var isauthor = user != null && await UserManager.IsInRoleAsync(user, "Author");
+}
+@{
+    ViewData["Title"] = "Print";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/printDonhang.css" />
+</head>
+<body>
+    @if (isAdmin)
+    {
+        <p>
+            <a id="print" class="btn btn-dark">Print</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label for="selectAllCheckbox" >
+                            <input style="display:none;" type="checkbox" id="selectAllCheckbox" />
+                            <span>Chon</span>
+                        </label>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsSuccess)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Message)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tennguoinhan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sdt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Diachi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Createtime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TransactionId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Error)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input class="checkpr" type="checkbox" data-price="@item.price" name="selectedOrders" value="@item.Id" />
+                            <input type="hidden" name="id" value="@item.Id" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsSuccess)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Message)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tennguoinhan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sdt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Diachi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Createtime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TransactionId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Error)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <div>
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn">Tro ve</a>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#selectAllCheckbox').on('change', function () {
+                var isChecked = $(this).prop('checked');
+                $('.checkpr').prop('checked', isChecked);
+            });
+
+            $('.checkpr').on('change', function () {
+                // Bỏ chọn tất cả các checkbox khác
+                $('.checkpr').not(this).prop('checked', false);
+            });
+
+        });
+
+        $('#print').click(function (e) {
+            e.preventDefault();
+
+            // Get the selected order item IDs
+            var selecteddonhangIds = $('.checkpr:checked').map(function () {
+                return $(this).val();
+            }).get();
+
+            console.log(`selecteddonhangIds: ${selecteddonhangIds}`);
+
+            // Check if there are selected orders
+            if (selecteddonhangIds.length > 0) {
+                // Initiate AJAX request to generate order details
+                $.ajax({
+                    url: '/Donhangs/GeneratePdfForSelectedOrders/',
+                    type: 'POST',
+                    data: {
+                        selecteddonhangIds: selecteddonhangIds
+                    },
+                    success: function (response) {
+                        response.forEach(function (item) {
+                            if (item.redirectUrl) {
+                                window.open(item.redirectUrl, '_blank');
+                            }
+                        });
+                    },
+                    error: function (xhr) {
+                        alert('Failed to fetch order details. Error: ' + xhr.responseText);
+                    }
+                });
+            } else {
+                alert('Please select at least one order.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+@inject SignInManager<LOGINUser> SignInManager
+@inject UserManager<LOGINUser> UserManager
+
+<h1> Trang Ca Nhan</h1>
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            <h3>@ViewData["Title"]</h3>
+            <div style="width: 30%; margin: 5px 35%;">
+                <img style="border-radius: 50%; width: 100px; height: 100px; margin: 12px 92px;" src="~/Image/Profile/icon-profile.jpg" />
+            </div>
+            <div style="text-align: center; width: 30%; margin: 5px 35%; font-weight: bold;">
+                Hello <br /> @UserManager.GetUserName(User)!
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

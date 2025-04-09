@@ -1,0 +1,116 @@
+﻿@page
+@model TMDT.Areas.Identity.Pages.Account.Manage.ReviewModel
+@{
+    ViewData["Title"] = "Manage Review";
+}
+<style>
+	.form-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr); /* Creates two columns of equal width */
+		gap: 20px; /* Space between grid items */
+		max-width: 800px; /* Max width of the form */
+		margin: auto; /* Center the form on the page */
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column; /* Makes the label and input stack vertically */
+	}
+
+	.control-label {
+		margin-bottom: 5px; /* Space between label and input */
+	}
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" class="form-grid">
+            <div asp-validation-summary="ModelOnly" class="text-danger" style="grid-column: 1 / -1;"></div> <!-- Span across all columns -->
+            <div class="form-group">
+                <label asp-for="productreview.ProductId" class="control-label">ProductId</label>
+                <input asp-for="productreview.ProductId" class="form-control" />
+                <span asp-validation-for="productreview.ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="productreview.UserId" class="control-label">Name</label>
+                <input asp-for="productreview.UserId" class="form-control" />
+                <span asp-validation-for="productreview.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="productreview.Comment" class="control-label">Comment</label>
+                <input asp-for="productreview.Comment" class="form-control" />
+                <span asp-validation-for="productreview.Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="productreview.Rating" class="control-label">Rating</label>
+                <input asp-for="productreview.Rating" class="form-control" />
+                <span asp-validation-for="productreview.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="productreview.CreatedAt" class="control-label">CreatedAt</label>
+                <input asp-for="productreview.CreatedAt" class="form-control" />
+                <span asp-validation-for="productreview.CreatedAt" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" style="grid-column: 1 / -1;">
+                <!-- Button spans both columns -->
+                <button type="submit" class="btn btn-primary" asp-page-handler="Create">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" style="margin: 12px 0%;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product-id</th>
+                <th>Name</th>
+                <th>rating</th>
+                <th>comment</th>
+                <th>CreatedAt</th>
+                <th>Actions</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.productreviews)
+            {
+                <tr>
+                    <form method="post"  class="col-md-11 form-grid" asp-page-handler="Edit" asp-route-id="@item.Id">
+                    <td>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="productreview.Id" value="@item.Id" />
+                        <input type="text" asp-for="productreview.ProductId" class="form-control" value="@item.ProductId" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="productreview.UserId" class="form-control" value="@item.UserId" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="productreview.Rating" class="form-control" value="@item.Rating" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="productreview.Comment" class="form-control" value="@item.Comment" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="productreview.CreatedAt" class="form-control" value="@item.CreatedAt" />
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </td>
+                    </form>
+                    <td class="col-md-1">
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" onsubmit="return confirm('Are you sure you want to delete this Product?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}

@@ -1,0 +1,93 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "ĐĂNG NHẬP";
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="text-center mb-4">
+                    <a asp-action="Index" asp-controller="Home" asp-area="">
+                        <img class="img-thumbnail" src="~/Image/Favicon/Favicon.jpg" alt="Logo" />
+                    </a>
+                </div>
+                <div class="text-center">
+                    <h1 class="mb-4">@ViewData["Title"]</h1>
+                </div>
+                <form id="account" method="post" class="user">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <input asp-for="Input.UserNameOrEmail" class="form-control form-control-user"
+                               aria-describedby="emailHelp" placeholder="Nhập username hoặc email" />
+                        <span asp-validation-for="Input.UserNameOrEmail" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Input.Password" class="form-control form-control-user" placeholder="Nhập mật khẩu" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            <input asp-for="Input.RememberMe" class="custom-control-input" />
+                            <label class="custom-control-label" asp-for="Input.RememberMe">Ghi nhớ đăng nhập</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-user btn-block">Đăng nhập</button>
+                    <hr>
+
+                    
+
+                    <div class="text-center">
+                        <a class="small text-decoration-none" id="forgot-password" asp-page="./ForgotPassword">Quên mật khẩu?</a>
+                    </div>
+                    <div class="text-center">
+                        <a class="small text-decoration-none" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Chưa có tài khoản? Đăng ký ngay</a>
+                    </div>
+                </form>
+                @if ((Model.ExternalLogins?.Count ?? 0) != 0)
+                {
+                    <div class="mb-3">
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            string classiconprovider = "";
+                            string classprovider = "";
+                            if (provider.DisplayName == "Google")
+                            {
+                                classprovider = "btn-google";
+                                classiconprovider = "fab fa-google fa-fw";
+                            }
+                            else if (provider.DisplayName == "Facebook")
+                            {
+                                classprovider = "btn-facebook";
+                                classiconprovider = "fab fa-facebook-f fa-fw";
+                            }
+                            <form id="external-account-@provider.Name" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <button type="submit" class="btn @classprovider btn-user btn-block"
+                                        name="provider" value="@provider.Name"
+                                        title="Log in using your @provider.DisplayName account">
+                                    <i class="@classiconprovider"></i>
+                                    Đăng nhập bằng @provider.DisplayName
+                                </button>
+                            </form>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

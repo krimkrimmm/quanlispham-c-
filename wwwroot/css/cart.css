@@ -1,0 +1,43 @@
+﻿body {
+    width: 100%;
+    height: 100%;
+    margin: 0px 0%;
+    font-size: 15px;
+}
+
+#divall {
+    width: 60%;
+    height: 100%;
+    margin: 0px 20%;
+}
+
+#span{
+    font-weight: normal;
+}
+
+#deleteall{
+    display: block;
+}
+
+@media (max-width: 768px){
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px 0%;
+        font-size: 10px;
+    }
+
+    #divall {
+        width: 100%;
+        height: 100%;
+        margin: 0px 0%;
+    }
+
+    #span {
+        font-weight: normal;
+    }
+
+    #deleteall{
+        display: none;
+    }
+}

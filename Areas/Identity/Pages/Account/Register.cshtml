@@ -1,0 +1,88 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "ĐĂNG KÝ TÀI KHOẢN";
+}
+
+<div class="row" style="margin: 50px 0%;">
+	<div class="col-md-1" style="margin: 50px 0%;">
+	</div>
+
+	<!--thumbnail-->
+	<div class="col-md-3" style="margin: 50px 0%;">
+		<a class="nav-link collapsed" style=" border-radius: 10px;" asp-action="Index" asp-controller="Home" asp-area="">
+			<img class="img-thumbnail" src="~/Image/Favicon/Favicon.jpg" />
+		</a>
+	</div>
+	<!--end thumbnail-->
+
+	<div class="col-md-2" style="margin: 50px 0%;">
+	</div>
+
+	<!--register-->
+	<div class="col-md-5" style="margin: 50px 0%;">
+		<div class="row-md-5 row-md-offset-2">
+			<form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+				<h4>Điền thông tin để tạo tài khoản mới.</h4>
+				<hr />
+				<div asp-validation-summary="All" class="text-danger"></div>
+				<div class="form-group" style="margin: 5px 0%; border-radius: 10px;">
+					<label asp-for="Input.UserName"></label>
+					<input asp-for="Input.UserName" class="form-control" />
+					<span asp-validation-for="Input.UserName" class="text-danger"></span>
+				</div>
+				<div class="form-group" style="margin: 5px 0%; border-radius: 10px;">
+					<label asp-for="Input.Email"></label>
+					<input asp-for="Input.Email" class="form-control" />
+					<span asp-validation-for="Input.Email" class="text-danger"></span>
+				</div>
+				<div class="form-group" style="margin: 5px 0%; border-radius: 10px;">
+					<label asp-for="Input.Password"></label>
+					<input asp-for="Input.Password" class="form-control" />
+					<span asp-validation-for="Input.Password" class="text-danger"></span>
+				</div>
+				<div class="form-group" style="margin: 5px 0%; border-radius: 10px;">
+					<label asp-for="Input.ConfirmPassword"></label>
+					<input asp-for="Input.ConfirmPassword" class="form-control" />
+					<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+				</div>
+				<div class="form-group" style="margin: 5px 0%; border-radius: 10px;">
+					<button type="submit" class="btn btn-primary form-control">Đăng ký</button>
+				</div>
+			</form>
+		</div>
+		<!--other register-->
+		<div class="row-md-5 row-md-offset-2">
+			@if ((Model.ExternalLogins?.Count ?? 0) != 0)
+			{
+				<section style="margin: 5px 0%;">
+					<h4>Sử dụng dịch vụ</h4>
+					<hr />
+					<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+						<div>
+							<p>
+								@foreach (var provider in Model.ExternalLogins)
+								{
+									<button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+								}
+							</p>
+						</div>
+					</form>
+				</section>
+			}
+		</div>
+
+		<div class="text-center row-md-2 row-md-offset-2">
+			<a class="small text-decoration-none" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Da có tài khoản, đăng nhap</a>
+		</div>
+		<!--end other register-->
+    </div>
+	<!--end register-->
+
+	<div class="col-md-1" style="margin: 50px 0%;">
+	</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
